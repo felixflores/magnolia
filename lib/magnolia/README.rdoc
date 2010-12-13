@@ -1,0 +1,26 @@
+== Overview
+Magnolia gem generates a dependency graph of views and partials given one
+or more action.
+
+ex.
+A user hits the show action of Pages controller, and show.html.haml calls
+partial 'a' on a collection with three elements.
+
+# show.html.haml
+= render :partial => 'a', :collection => %{cat dog mouse}
+
+The graph generated would be:
+
+Pages#show --- 1 ---> pages/show.html.haml --- 3 ---> pages/a.html.haml
+
+As you can see the graph indicates that show.html.haml is call once, while
+a.html.haml is call 3 times.
+
+
+== Setup
+
+This gem has requires Graphviz since the graph generated uses dot notation.
+
+You can download and install Graphviz {here}[http://www.graphviz.org/Download..php].
+
+
